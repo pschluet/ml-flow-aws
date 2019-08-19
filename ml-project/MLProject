@@ -1,0 +1,10 @@
+name: anomaly-detect
+
+docker_env:
+   image:  poc/ml-project
+
+entry_points:
+  main:
+    parameters:
+      contamination: {type: float, default: 0.15}
+    command: "python train.py {contamination}"

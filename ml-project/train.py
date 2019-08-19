@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import sys
 from sklearn import datasets
 from sklearn.externals import joblib
 from sklearn.ensemble import IsolationForest
@@ -27,6 +28,8 @@ def generate_data():
     return np.concatenate([inliers, outliers], axis=0)
 
 if __name__ == '__main__':
+    contamination = sys.argv[1]
+
     model = IsolationForest(n_jobs=-1, contamination=0.15)
     model.fit(generate_data())
     joblib.dump(model, os.path.join('/mlflow', 'model.joblib'))
