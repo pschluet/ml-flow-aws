@@ -4,6 +4,8 @@ import sys
 from sklearn import datasets
 from sklearn.externals import joblib
 from sklearn.ensemble import IsolationForest
+import mlflow
+import mlflow.sklearn
 
 def generate_data():
     outliers_fraction = 0.15
@@ -28,9 +30,17 @@ def generate_data():
     return np.concatenate([inliers, outliers], axis=0)
 
 if __name__ == '__main__':
-    contamination = sys.argv[1]
+    # mlflow.set_tracking_uri('http://production.npxv2cp3ts.us-east-1.elasticbeanstalk.com')
+    mlflow.set_tracking_uri('http://127.0.0.1:5000')
+    print('Tracking URI: {}'.format(mlflow.tracking.get_tracking_uri()))
 
-    model = IsolationForest(n_jobs=-1, contamination=0.15)
-    model.fit(generate_data())
-    joblib.dump(model, os.path.join('/mlflow', 'model.joblib'))
-    print('DONE!')
+    with mlflow.start_run() as run:
+        contamination = sys.argv[1]
+
+        model = IsolationForest(n_jobs=-1, contamination=0.15)
+        model.fit(generate_data())
+
+        mlflow.log_param("contamination", contamination)
+    
+        mlflow.sklearn.log_model(model, "models")
+        print('DONE!')

@@ -1,2 +1,4 @@
 mlflow/*
 venv/*
+ml-project/mlruns/*
+ml-project/venv/*
