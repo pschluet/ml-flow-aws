@@ -30,8 +30,8 @@ def generate_data():
     return np.concatenate([inliers, outliers], axis=0)
 
 if __name__ == '__main__':
-    # mlflow.set_tracking_uri('http://production.npxv2cp3ts.us-east-1.elasticbeanstalk.com')
-    mlflow.set_tracking_uri('http://127.0.0.1:5000')
+    mlflow.set_tracking_uri('http://production.yg2upmxaxt.us-east-1.elasticbeanstalk.com')
+    # mlflow.set_tracking_uri('http://127.0.0.1:5000')
     print('Tracking URI: {}'.format(mlflow.tracking.get_tracking_uri()))
 
     with mlflow.start_run() as run:
