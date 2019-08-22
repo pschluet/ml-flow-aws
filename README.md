@@ -44,6 +44,9 @@ mlflow sagemaker deploy \
 
 To access the SageMaker endpoint via the AWS boto3 Python client
 ```
+import boto3
+import json
+
 client = boto3.client('sagemaker-runtime')
 response = client.invoke_endpoint(
         EndpointName='ML-Flow-POC', 
