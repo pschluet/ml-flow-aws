@@ -47,7 +47,8 @@ To access the SageMaker endpoint via the AWS boto3 Python client
 client = boto3.client('sagemaker-runtime')
 response = client.invoke_endpoint(
         EndpointName='ML-Flow-POC', 
-        ContentType='application/json; format=pandas-records', Body='[[2,2],[1,3]]'
+        ContentType='application/json; format=pandas-records', 
+        Body='[[2,2],[1,3]]'
     ) 
 result = json.loads(response['Body'].read().decode())
 print(result)
