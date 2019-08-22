@@ -1,14 +1,24 @@
 # ml-flow-aws
 A dockerized version of [MlFlow](https://mlflow.org/) deployed on AWS
 
-## Build
-To build the docker image
+## Tracking Server
+To deploy the tracking server to AWS elastic beanstalk
 ```
-docker build -t poc/mlflow .
+cd ./tracking-server
+./deploy.sh
+```
+**Note**: The last `update-environment` command will probably fail because it must be run after the environment is already up and running. If it fails, wait until the environment is running (open the AWS Elastic Beanstalk console to check the status), then execute the final command.
+
+## MLFlow Project
+### Build
+To build the MLFlow Project Docker image locally (this contains the training code)
+```
+cd ./ml-project
+docker build -t poc/ml-project .
 ```
 
-## Usage
-To run the docker image
+### Run
+To run the training script locally and upload the results to the tracking server
 ```
-docker run -v /tmp/mlruns:/mlflow/ -p 5000:5000 poc/mlflow
+docker run -e AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY> -e AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY> poc/ml-project python train.py 0.18
 ```
