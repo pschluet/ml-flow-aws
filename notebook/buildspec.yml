@@ -15,7 +15,7 @@ phases:
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG notebook/.
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Training the model...
-      - docker run $IMAGE_REPO_NAME:$IMAGE_TAG python notebook/train.py      
+      - docker run -v ..:/home/jovyan/work $IMAGE_REPO_NAME:$IMAGE_TAG python notebook/train.py      
   post_build:
     commands:
       - echo Build completed on `date`
