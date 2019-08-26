@@ -39,7 +39,8 @@ mlflow sagemaker deploy \
     -m s3://ml-flow-435432815368/0/65b8b0a279a64fec95d4481808164c2c/artifacts/models \
     -i 435432815368.dkr.ecr.us-east-1.amazonaws.com/poc/ml-project:1.2.0 \
     -e arn:aws:iam::435432815368:role/service-role/AmazonSageMaker-ExecutionRole-20190217T114343 \
-    --region-name us-east-1 -t ml.t2.medium
+    --region-name us-east-1 
+    -t ml.t2.medium
 ```
 
 To access the SageMaker endpoint via the AWS boto3 Python client
