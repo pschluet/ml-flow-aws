@@ -32,12 +32,14 @@ if __name__ == '__main__':
     print('Tracking URI: {}'.format(mlflow.tracking.get_tracking_uri()))
 
     with mlflow.start_run() as run:
+        
         contamination = 0.15
 
         model = IsolationForest(n_jobs=-1, contamination=contamination, behaviour="new")
         model.fit(generate_data())
 
+        if 'CODEBUILD_RESOLVED_SOURCE_VERSION' in os.environ:
+            mlflow.set_tag('mlflow.source.git.commit', os.getenv('CODEBUILD_RESOLVED_SOURCE_VERSION'))
         mlflow.log_param("contamination", contamination)
-    
         mlflow.sklearn.log_model(model, "models")
         print('DONE!')
