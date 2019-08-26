@@ -7,3 +7,5 @@ RUN conda install \
     pip install awscli --upgrade --user
 
 ENV MLFLOW_TRACKING_URI=http://production.yg2upmxaxt.us-east-1.elasticbeanstalk.com
+
+WORKDIR /home/jovyan/work

@@ -10,4 +10,3 @@ services:
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - USER
-    working_dir: /home/jovyan/work
