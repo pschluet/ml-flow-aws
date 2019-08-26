@@ -5,9 +5,10 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - .:/home/jovyan/work
+      - ..:/home/jovyan/work
       - ~/.aws:/home/jovyan/.aws
     environment:
       - MLFLOW_TRACKING_URI=http://production.yg2upmxaxt.us-east-1.elasticbeanstalk.com
       - JUPYTER_ENABLE_LAB=yes
       - USER
+    working_dir: /home/jovyan/work
