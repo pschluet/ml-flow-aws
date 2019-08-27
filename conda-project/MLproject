@@ -1,0 +1,9 @@
+name: ml-flow-conda
+
+conda_env: environment.yml
+
+entry_points:
+  main:
+    parameters:
+      contamination: {type: float, default: 0.15}
+    command: "python train.py {contamination}"
