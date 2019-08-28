@@ -29,7 +29,7 @@ def generate_data():
     return np.concatenate([inliers, outliers], axis=0)
 
 if __name__ == '__main__':
-    print('Tracking URI: {}'.format(mlflow.tracking.get_tracking_uri()))
+    #print('Tracking URI: {}'.format(mlflow.tracking.get_tracking_uri()))
 
     with mlflow.start_run() as run:
         
@@ -42,4 +42,4 @@ if __name__ == '__main__':
             mlflow.set_tag('mlflow.source.git.commit', os.getenv('CODEBUILD_RESOLVED_SOURCE_VERSION'))
         mlflow.log_param("contamination", contamination)
         mlflow.sklearn.log_model(model, "models")
-        print('DONE!')
+        print('RUN_ID::{}::'.format(run.info.run_id))
