@@ -22,7 +22,7 @@ matplotlib==3.0.2
 mlflow==1.2.0
 numpy==1.16.1
 pandas==0.24.1
-paramiko==2.4.2
+paramiko==2.10.1
 protobuf==3.7.1
 protobuf3-to-dict==0.1.5
 pyasn1==0.4.5
