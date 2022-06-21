@@ -20,7 +20,7 @@ jsonschema==2.6.0
 kiwisolver==1.0.1
 matplotlib==3.0.2
 mlflow==1.2.0
-numpy==1.16.1
+numpy==1.22.0
 pandas==0.24.1
 paramiko==2.4.2
 protobuf==3.7.1
